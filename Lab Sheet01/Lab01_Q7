@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LABSHEET01___QUESTION7
+{
+    internal class Program
+    {
+        static double accountBalance = 1000.0;
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                Console.WriteLine("ATM Simulation:");
+                Console.WriteLine("1. Check Balance");
+                Console.WriteLine("2. Deposit Money");
+                Console.WriteLine("3. Withdraw Money");
+               
+                Console.WriteLine("4. Exit");
+
+                Console.Write("Enter your choice (1-4): ");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        CheckBalance();
+                        break;
+                    case "2":
+                        DepositMoney();
+                        break;
+                    case "3":
+                        WithdrawMoney();
+                        break;
+                    case "4":
+                        Console.WriteLine("Thank you for using the ATM. Exiting...");
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Please enter a valid option (1-4).");
+                        break;
+                }
+            }
+        }
+
+        // Function to check account balance
+        static void CheckBalance()
+        {
+            Console.WriteLine($"Your current balance is: ${accountBalance}");
+        }
+
+        // Function to deposit money
+        static void DepositMoney()
+        {
+            Console.Write("Enter the amount to deposit: $");
+            if (double.TryParse(Console.ReadLine(), out double depositAmount) && depositAmount > 0)
+            {
+                accountBalance += depositAmount;
+                Console.WriteLine($"Deposit successful. Your new balance is: ${accountBalance}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid amount. Please enter a valid positive number.");
+            }
+        }
+
+        // Function to withdraw money
+        static void WithdrawMoney()
+        {
+            Console.Write("Enter the amount to withdraw: $");
+            if (double.TryParse(Console.ReadLine(), out double withdrawalAmount) && withdrawalAmount > 0)
+            {
+                if (withdrawalAmount <= accountBalance)
+                {
+                    accountBalance -= withdrawalAmount;
+                    Console.WriteLine($"Withdrawal successful. Your new balance is: ${accountBalance}");
+                }
+                else
+                {
+                    Console.WriteLine("Insufficient funds. Withdrawal failed.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid amount. Please enter a valid positive number.");
+            }
+        }
+    }
+}
