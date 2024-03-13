@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LABSHEET01___QUESTION5
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter a number to display its multiplication table:");
+
+            string userInput = Console.ReadLine();
+
+            if (int.TryParse(userInput, out int number))
+            {
+                Console.WriteLine($"Multiplication Table for {number}:");
+
+                for (int i = 1; i <= 10; i++)
+                {
+                    Console.WriteLine($"{number} x {i} = {number * i}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("ERROR: Please enter a valid integer.");
+            }
+            Console.ReadLine();
+        }
+    }
+}
