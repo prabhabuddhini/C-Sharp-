@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LABSHEET01___QUESTION6
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter student's name:");
+            string studentName = Console.ReadLine();
+
+            Console.WriteLine("Enter exam marks:");
+
+            
+            string marksInput = Console.ReadLine();
+
+            
+            if (int.TryParse(marksInput, out int marks) && marks >= 0 && marks <= 100)
+            {
+                
+                string grade = DetermineGrade(marks);
+                Console.WriteLine($"{studentName}'s Grade: {grade}");
+            }
+            else
+            {
+                
+                Console.WriteLine("ERROR: Please enter a valid integer between 0 and 100 for exam marks.");
+            }
+            Console.ReadLine();
+        }
+
+       
+        static string DetermineGrade(int marks)
+        {
+            if (marks >= 75 && marks <= 100)
+            {
+                return "A";
+            }
+            else if (marks >= 60 && marks <= 74)
+            {
+                return "B";
+            }
+            else if (marks >= 50 && marks <= 59)
+            {
+                return "C";
+            }
+            else if (marks >= 40 && marks <= 49)
+            {
+                return "D";
+            }
+            else
+            {
+                return "Fail";
+            }
+        }
+    }
+}
