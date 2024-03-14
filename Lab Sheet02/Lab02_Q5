@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab02_Q5
+{
+    class LibraryBook
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public bool Available { get; private set; }
+
+        public LibraryBook(string title, string author)
+        {
+            Title = title;
+            Author = author;
+            Available = true;
+        }
+        public void BorrowBook()
+        {
+            if (Available)
+            {
+                Available = false; 
+                Console.WriteLine("Book '" + Title + "' by " + Author + " has been borrowed.");
+            }
+            else
+            {
+                Console.WriteLine("Sorry, the book '" + Title + "' by " + Author + " is currently not available.");
+            }
+        }
+        public void ReturnBook()
+        {
+            Available = true; 
+            Console.WriteLine("Book '" + Title + "' by " + Author + " has been returned.");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<LibraryBook> books = new List<LibraryBook>
+            {
+                new LibraryBook("Harry Potter", "J.K.Rowling"),
+                new LibraryBook("The Lord of the Rings", "John Ronald Reuel Tolkien"),
+                new LibraryBook("Percy Jackson & the Olympians", "Rick Riordan")
+            };
+            foreach (var book in books)
+            {
+                Console.WriteLine("Attempting to borrow " + book.Title + " by " + book.Author);
+                book.BorrowBook();
+            }
+            Console.WriteLine("\nReturning a book...");
+            books[0].ReturnBook();
+
+            Console.WriteLine("\nLibrary Status after return:");
+            foreach (var book in books)
+            {
+                Console.WriteLine("Book '" + book.Title + "' by " + book.Author + " - Available: " + book.Available);
+            }
+            Console.ReadLine();
+
+        }
+    }
+}
