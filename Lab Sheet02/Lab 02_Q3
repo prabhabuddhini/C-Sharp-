@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab02_Q3
+{
+    class TemperatureTracker
+    {
+        private double[] dailyTemperatures;
+
+        public TemperatureTracker(int numberOfDays)
+        {
+            dailyTemperatures = new double[numberOfDays];
+        }
+        public void InputTemperatures()
+        {
+            for (int i = 0; i < dailyTemperatures.Length; i++)
+            {
+                Console.Write("Enter temperature for day " + (i + 1) + ": ");
+                if (double.TryParse(Console.ReadLine(), out double temperature))
+                {
+                    dailyTemperatures[i] = temperature;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid temperature.");
+                    i--;
+                }
+            }
+        }
+        public void DisplayWeeklyReport()
+        {
+            Console.WriteLine("\nWeekly Temperature Report:");
+            for (int i = 0; i < dailyTemperatures.Length; i++)
+            {
+                Console.WriteLine("Day " + (i + 1) + ": " + dailyTemperatures[i] + "°C");
+            }
+        }
+    }
+
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the number of days in the week: ");
+            if (int.TryParse(Console.ReadLine(), out int numberOfDays) && numberOfDays > 0)
+            {
+                TemperatureTracker weeklyTemperatures = new TemperatureTracker(numberOfDays);
+
+                weeklyTemperatures.InputTemperatures();
+
+                weeklyTemperatures.DisplayWeeklyReport();
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number of days.");
+            }
+            Console.ReadLine();
+        }
+    }
+}
