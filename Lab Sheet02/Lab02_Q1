@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab02_Q1
+{
+    class Book
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+    } 
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Book myBook = new Book();
+
+            myBook.Title = "Guru Geethaya";
+            myBook.Author = "Chinghiz Aitmatov";
+
+            Console.WriteLine("Book Title: " + myBook.Title);
+            Console.WriteLine("Author: " + myBook.Author);
+
+            Console.ReadLine();
+        }
+    }
+}
