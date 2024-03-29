@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab03_Q3
+{
+    class Product
+    {
+        private int productId;
+        private string productName;
+        private decimal price;
+        private int quantityInStock;
+
+        
+        public Product(int productId, string productName, decimal price, int quantityInStock)
+        {
+            this.productId = productId;
+            this.productName = productName;
+            this.price = price;
+            this.quantityInStock = quantityInStock;
+        }
+        public int ProductId
+        {
+            get { return productId; }
+
+        }
+        public string ProductName
+        {
+            get { return productName; }
+        }
+        public decimal Price
+        {
+            get { return price; }
+        }
+
+        public int QuantityInStock
+        {
+            get { return quantityInStock; }
+            set { quantityInStock = value; }
+        }
+        public void DisplayProductDetails()
+        {
+
+            Console.WriteLine($"Product Name: {productName}");
+            Console.WriteLine($"Price: ${price}");
+            Console.WriteLine($"Quantity in Stock: {quantityInStock}");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Product laptop = new Product(101, "Laptop", 800, 10);
+
+            Console.WriteLine("Product Details:");
+            Console.WriteLine($"Name: {laptop.ProductName}");
+            Console.WriteLine($"Price: ${laptop.Price}");
+            Console.WriteLine($"Quantity: {laptop.QuantityInStock}");
+            Console.ReadLine();
+        }
+    }
+}
