@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab03_Q2
+{
+    class Employee
+    {
+
+        public int EmployeeID { get; } 
+        public string FullName { get; set; }
+        public double Salary { get; private set; }
+
+        
+        public Employee(int employeeID, string fullName, double salary)
+        {
+
+            EmployeeID = employeeID;
+            FullName = fullName;
+            Salary = salary;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Employee emp = new Employee(101, "John Doe", 50000);
+
+            
+            Console.WriteLine("Employee ID: " + emp.EmployeeID);
+
+            
+            emp.FullName = "Jane Smith";
+            Console.WriteLine("Updated Full Name: " + emp.FullName);
+
+            Console.ReadLine();
+        }
+    }
+}
